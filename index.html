@@ -11,9 +11,9 @@
     <header>
         <nav>
             <section class="top-part">
-                <img src="src/img/logo.svg" class="pvc-logo">
+                <img src="src/img/logo.svg" class="pvc-logo" draggable="false">
                 <h1>BURGERSUP</h1>
-                <img src="src/img/icon/setting.svg" class="settings">
+                <img src="src/img/icon/setting.svg" class="settings" draggable="false">
             </section>
             <section class="bottom-part">
                 <div class="page-selection">
@@ -30,7 +30,9 @@
                     <form class="user-create">
                         <label for="user-creation">Entrez votre prénom :</label>
                         <input class="user-creation" type="text" placeholder="Créer un profil" name="user-creation">
-                        <button type="submit">Créer</button>
+                        <button type="submit">
+                            <img src="src/img/icon/plus.svg">
+                        </button>
                     </form>
                     <div class="user-select">
                         <p>

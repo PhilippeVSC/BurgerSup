@@ -22,7 +22,7 @@
     --filtercolor7: invert(14%) sepia(33%) saturate(1818%) hue-rotate(184deg) brightness(99%) contrast(91%);
 
     /* Other property */
-    --header-height: 200px;
+    --header-height: 160px;
     --padding: 70px;
 }
 
@@ -103,8 +103,7 @@ header .top-part .settings:hover {
 
 /* Bottom Part */
 header .bottom-part {
-    margin-top: 30px;
-    background-color: blue;
+    margin-top: 25px;
     display: flex;
     flex-direction: row;
 }
@@ -116,6 +115,21 @@ header .bottom-part .page-selection,
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+/* Page Selection */
+header .bottom-part .page-selection {
+    gap: 50px;
+    color: var(--color7);
+    font-size: 12px;
+    font-weight: 400;
+}
+
+header .bottom-part .page-selection img {
+    width: 36px;
+    height: 36px;
+    margin-right: 14px;
+    filter: var(--filtercolor7);
 }
 
 /* Profil Gestion */
@@ -131,12 +145,23 @@ header .bottom-part .profil-gestion {
     display: none;
 }
 
+header select,
+header button,
+header input,
+header input:focus  {
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
 .profil-gestion .user-create,
 .profil-gestion .user-select {
     background-color: var(--color1);
     border: 2px solid var(--color2);
     border-radius: 7px;
     padding: 10px;
+    display: flex;
+    align-items: center;
 }
 
 /*-------- Main -------- */
