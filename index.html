@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BurgerSup</title>
+    <link rel="stylesheet" type="text/css" href="style.css"> 
+</head>
+<body>
+    <header>
+        <nav>
+            <section class="top-part">
+                <img src="src/img/logo.svg" class="pvc-logo">
+                <h1>BURGERSUP</h1>
+                <img src="src/img/icon/setting.svg" class="settings">
+            </section>
+            <section class="bottom-part">
+                <div class="page-selection">
+                    <div class="calendar-select">
+                        <img src="src/img/icon/calendar.svg" class="calendar-icon">
+                        <h2>Calendrier</h2>
+                    </div>
+                    <div class="users-select">
+                        <img src="src/img/icon/users.svg" class="users-icon">
+                        <h2>Utilisateurs</h2>
+                    </div>
+                </div>
+                <div class="profil-gestion">
+                    <form class="user-create">
+                        <label for="user-creation">Entrez votre prénom :</label>
+                        <input class="user-creation" type="text" placeholder="Créer un profil" name="user-creation">
+                        <button type="submit">Créer</button>
+                    </form>
+                    <div class="user-select">
+                        <p>
+                            <label for="dropdown">Sélectionne ton nom:</label>
+                            <select id="dropdown" name="dropdown">
+                              <option value="option1">Philippe</option>
+                              <option value="option2">Arthur</option>
+                              <option value="option3">Baptyst</option>
+                              <option value="option4">Jules</option>
+                            </select>
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </nav>
+    </header>
+    <main>
+        <section class="calendar">
+            <table>
+                <thead>
+                <tr>
+                    <th colspan="7">Avril 2023</th>
+                </tr>
+                <tr>
+                    <th>Dim</th>
+                    <th>Lun</th>
+                    <th>Mar</th>
+                    <th>Mer</th>
+                    <th>Jeu</th>
+                    <th>Ven</th>
+                    <th>Sam</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>11</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                    <td>16</td>
+                    <td>17</td>
+                    <td>18</td>
+                </tr>
+                <tr>
+                    <td>19</td>
+                    <td>20</td>
+                    <td>21</td>
+                    <td>22</td>
+                    <td>23</td>
+                    <td>24</td>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <td>26</td>
+                    <td>27</td>
+                    <td>28</td>
+                    <td>29</td>
+                    <td>30</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </section>    
+    </main>
+</body>
+</html>

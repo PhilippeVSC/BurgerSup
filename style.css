@@ -1,0 +1,147 @@
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&display=swap');
+
+/* Define some variable */
+:root {
+    /* Colors */
+    --color1: #ffffff;
+    --color2: #f0f1f3;
+    --color3: #c6c9d3;
+    --color4: #5f697d;
+    --color5: #63e6be;
+    --color6: #146ebe;
+    --color7: #183153;
+
+    /* Color filter for SVG */
+    --filtercolor1: invert(100%) sepia(0%) saturate(7500%) hue-rotate(326deg) brightness(103%) contrast(102%);
+    --filtercolor2: invert(100%) sepia(21%) saturate(447%) hue-rotate(177deg) brightness(100%) contrast(91%);
+    --filtercolor3: invert(86%) sepia(14%) saturate(133%) hue-rotate(189deg) brightness(91%) contrast(92%);
+    --filtercolor4: invert(38%) sepia(27%) saturate(333%) hue-rotate(182deg) brightness(97%) contrast(86%);
+    --filtercolor5: invert(74%) sepia(64%) saturate(329%) hue-rotate(106deg) brightness(99%) contrast(87%);
+    --filtercolor6: invert(33%) sepia(19%) saturate(7196%) hue-rotate(192deg) brightness(87%) contrast(84%);
+    --filtercolor7: invert(14%) sepia(33%) saturate(1818%) hue-rotate(184deg) brightness(99%) contrast(91%);
+
+    /* Other property */
+    --header-height: 200px;
+    --padding: 70px;
+}
+
+/* Reset default styles */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Styles globaux */
+body {
+    font-family: 'Poppins', sans-serif;
+    width: 100vw;
+    height: 100vh;
+}
+
+h1 {
+    font-weight: 700;
+}
+
+h2, h3, h4, h5, h6 {
+    font-weight: 600;
+}
+
+p {
+    font-weight: 400;
+}
+
+img {
+    width: 30px;
+    height: 30px;
+}
+
+/*-------- Header -------- */
+header {
+    background-color: var(--color1);
+    height: var(--header-height);
+    width: 100%;
+    padding-top: 20px;
+    padding-left: var(--padding);
+    padding-right: var(--padding);
+}
+
+/* Top part */
+header .top-part {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+header .top-part h1 {
+    font-size: 22px;
+    margin-left: 8px;
+    color: var(--color7);
+}
+
+header .top-part .pvc-logo {
+    width: 26px;
+    height: 26px;
+    filter: var(--filtercolor7);
+}
+
+header .top-part .settings {
+    margin-left: auto;
+    width: 32px;
+    height: 32px;
+    filter: var(--filtercolor4);
+    cursor: pointer;
+    transition: 300ms;
+}
+
+header .top-part .settings:hover {
+    transform: rotate(80deg);
+}
+
+/* Bottom Part */
+header .bottom-part {
+    margin-top: 30px;
+    background-color: blue;
+    display: flex;
+    flex-direction: row;
+}
+
+/* Page Selection */
+header .bottom-part .page-selection,
+.page-selection .calendar-select,
+.page-selection .users-select {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* Profil Gestion */
+header .bottom-part .profil-gestion {
+    margin-left: auto;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+}
+
+.profil-gestion label {
+    display: none;
+}
+
+.profil-gestion .user-create,
+.profil-gestion .user-select {
+    background-color: var(--color1);
+    border: 2px solid var(--color2);
+    border-radius: 7px;
+    padding: 10px;
+}
+
+/*-------- Main -------- */
+main {
+    background-color: var(--color2);
+    width: 100%;
+    height: calc(100% - var(--header-height));
+}
