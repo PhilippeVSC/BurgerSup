@@ -438,13 +438,58 @@ main .calendar-page .left-part {
 
 main .calendar-page .calendar {
     grid-area: 1 / 2 / 2 / 3;
-    padding: 20px;
-}
-
-.calendar table {
+    padding: 24px;
+    padding-top: 30px;
+    padding-right: 0;
     width: 100%;
     height: 100%;
 }
+
+.calendar-container {
+    width: 100%;
+    height: fit-content;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px
+}
+
+.calendar-container > div:first-child {
+    height: 30px;
+}
+
+.calendar-container > div:first-child > div {
+    width: calc(100% / 7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color7);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.calendar-container > div {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 20px;
+}
+
+.calendar-container > div:not(:first-child) > div {
+    background-color: var(--color1);
+    width: calc(100% / 7);
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    cursor: pointer;
+    color: var(--color7);
+    font-size: 20px;
+    font-weight: 500;
+}
+
 
 /* User Page */
 main .users-page {
