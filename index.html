@@ -11,18 +11,20 @@
     <header>
         <nav>
             <section class="top-part">
-                <img src="src/img/logo.svg" class="pvc-logo" draggable="false">
+                <a href="https://www.philippevivesc.fr/">
+                    <img src="src/img/logo.svg" class="pvc-logo" draggable="false">
+                </a>
                 <h1>BURGERSUP</h1>
                 <img src="src/img/icon/setting.svg" class="settings" draggable="false">
             </section>
             <section class="bottom-part">
                 <div class="page-selection">
-                    <div class="calendar-select">
-                        <img src="src/img/icon/calendar.svg" class="calendar-icon">
+                    <div class="calendar-select selected" onclick="switchSelected()">
+                        <img src="src/img/icon/calendar.svg" class="calendar-icon" draggable="false">
                         <h2>Calendrier</h2>
                     </div>
-                    <div class="users-select">
-                        <img src="src/img/icon/users.svg" class="users-icon">
+                    <div class="users-select" onclick="switchSelected()">
+                        <img src="src/img/icon/users.svg" class="users-icon" draggable="false">
                         <h2>Utilisateurs</h2>
                     </div>
                 </div>
@@ -35,17 +37,15 @@
                         </button>
                     </form>
                     <div class="user-select">
-                        <p>
-                            <label for="dropdown">Sélectionne ton nom:</label>
-                            <select id="dropdown" name="dropdown">
-                              <option value="option1">Philippe</option>
-                              <option value="option2">Arthur</option>
-                              <option value="option3">Baptyst</option>
-                              <option value="option4">Jules</option>
-                            </select>
-                        </p>
+                        <label for="dropdown">Sélectionne ton nom:</label>
+                        <select id="dropdown" name="dropdown">
+                            <option value="option1">Philippe</option>
+                            <option value="option2">Arthur</option>
+                            <option value="option3">Baptyst</option>
+                            <option value="option4">Jules</option>
+                        </select>
                     </div>
-                </div>
+                </div>                      
             </section>
         </nav>
     </header>
@@ -116,5 +116,6 @@
             </table>
         </section>    
     </main>
+    <script src="script.js"></script>
 </body>
 </html>
