@@ -50,71 +50,111 @@
         </nav>
     </header>
     <main>
-        <section class="calendar">
-            <table>
-                <thead>
-                <tr>
-                    <th colspan="7">Avril 2023</th>
-                </tr>
-                <tr>
-                    <th>Dim</th>
-                    <th>Lun</th>
-                    <th>Mar</th>
-                    <th>Mer</th>
-                    <th>Jeu</th>
-                    <th>Ven</th>
-                    <th>Sam</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>6</td>
-                    <td>7</td>
-                    <td>8</td>
-                    <td>9</td>
-                    <td>10</td>
-                    <td>11</td>
-                </tr>
-                <tr>
-                    <td>12</td>
-                    <td>13</td>
-                    <td>14</td>
-                    <td>15</td>
-                    <td>16</td>
-                    <td>17</td>
-                    <td>18</td>
-                </tr>
-                <tr>
-                    <td>19</td>
-                    <td>20</td>
-                    <td>21</td>
-                    <td>22</td>
-                    <td>23</td>
-                    <td>24</td>
-                    <td>25</td>
-                </tr>
-                <tr>
-                    <td>26</td>
-                    <td>27</td>
-                    <td>28</td>
-                    <td>29</td>
-                    <td>30</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
-        </section>    
+        <!-- Calendar Main Page -->
+        <div class="calendar-Page">
+            <section class="left-part">
+                <div class="date">
+                    <img src="src/img/icon/pin.svg">
+                    <p id="date">Lundi 12 février</p>
+                </div>
+                <div class="hours-input-container">
+                    <label for="hours-input">Entre le nombre d'heures</label>
+                    <input class="hours-input" type="text" placeholder="Nombre d'heures" name="hours-input">
+                    <button type="submit">
+                        <img src="src/img/icon/check.svg">
+                    </button>
+                </div>
+                <div class="recap-container">
+                    <table>
+                        <tr>
+                        <th><img src="src/img/icon/burgersup-icon.svg" alt="BurgerSup Icon"></th>
+                        <th>Récapitulatif</th>
+                        </tr>
+                        <tr>
+                        <td>Lundi</td>
+                        <td>148h</td>
+                        </tr>
+                        <tr>
+                        <td>Février</td>
+                        <td>148h</td>
+                        </tr>
+                        <tr>
+                        <td>2023</td>
+                        <td>148h</td>
+                        </tr>
+                    </table>                  
+                </div>
+            </section>
+            <section class="calendar">
+                <table>
+                    <thead>
+                    <tr>
+                        <th colspan="7">Avril 2023</th>
+                    </tr>
+                    <tr>
+                        <th>Dim</th>
+                        <th>Lun</th>
+                        <th>Mar</th>
+                        <th>Mer</th>
+                        <th>Jeu</th>
+                        <th>Ven</th>
+                        <th>Sam</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>11</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>13</td>
+                        <td>14</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>17</td>
+                        <td>18</td>
+                    </tr>
+                    <tr>
+                        <td>19</td>
+                        <td>20</td>
+                        <td>21</td>
+                        <td>22</td>
+                        <td>23</td>
+                        <td>24</td>
+                        <td>25</td>
+                    </tr>
+                    <tr>
+                        <td>26</td>
+                        <td>27</td>
+                        <td>28</td>
+                        <td>29</td>
+                        <td>30</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+        <!-- User List Page -->
+        <div class="users-page">
+            <p>Hihi</p>
+        </div>
     </main>
     <script src="script.js"></script>
 </body>

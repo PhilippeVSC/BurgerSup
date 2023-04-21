@@ -23,7 +23,7 @@
 
     /* Other property */
     --header-height: 150px;
-    --padding: 150px;
+    --padding: 200px;
 }
 
 /* Reset default styles */
@@ -125,10 +125,7 @@ header .bottom-part .page-selection {
     display: flex;
     flex-direction: row;
     align-items: center;
-}
 
-.page-selection .calendar-select,
-.page-selection .users-select {
     width: fit-content;
     position: relative;
     cursor: pointer;
@@ -276,7 +273,41 @@ header input:focus  {
 
 /*-------- Main -------- */
 main {
+    position: relative;
     background-color: var(--color2);
     width: 100%;
+    padding-left: var(--padding);
+    padding-right: var(--padding);
     height: calc(100% - var(--header-height));
+    overflow: hidden;
+}
+
+main .calendar-Page {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 1fr; 
+}
+
+main .calendar-Page .left-part {
+    background-color: red;
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+main .calendar-Page .calendar {
+    grid-area: 1 / 2 / 2 / 3;
+    background-color: blue;
+}
+
+main .users-page {
+    top: 0;
+    left: var(--padding);
+    position: absolute;
+    width: calc(100% - (var(--padding) * 2));
+    height: 100%;
+    background-color: aqua;
+    z-index: 2;
+    transform: translateY(-100%);
+    transition: 200ms cubic-bezier(.36,.08,.51,.84);
 }
