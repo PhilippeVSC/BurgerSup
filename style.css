@@ -300,6 +300,7 @@ main .calendar-page {
 
 main .calendar-page .left-part {
     padding-top: 30px;
+    padding-bottom: 30px;
     grid-area: 1 / 1 / 2 / 2;
     display: flex;
     flex-direction: column;
@@ -435,60 +436,97 @@ main .calendar-page .left-part {
     font-weight: 600;
 }
 
+/* Calendar Section */
 main .calendar-page .calendar {
     grid-area: 1 / 2 / 2 / 3;
-    padding: 24px;
+    padding-left: 24px;
     padding-top: 30px;
-    padding-right: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 30px); /* Padding */
 }
 
-.calendar-container {
-    width: 100%;
-    height: fit-content;
-
+/* Changing month part */
+.calendar .month {
+    height: 30px;
     display: flex;
     flex-direction: row;
+    justify-content: right;
+    margin-bottom: 25px;
+}
+
+.calendar .month p {
+    color: var(--color4);
+    font-weight: 500;
+    font-size: 18px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.calendar .month button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar .month button img {
+    width: 20px;
+    height: 20px;
+    filter: var(--filtercolor4);
+    transition: 200ms;
+}
+
+.calendar .month button img:hover {
+    opacity: .8;
+}
+
+.calendar .month .precedent-month-btn img {
+    transform: rotate(90deg);
+}
+
+.calendar .month .next-month-btn img {
+    transform: rotate(270deg);
+}
+
+/* Calendar Container */
+.calendar-container {
+    height: calc(100% - 30px - 50px); /* Reduce Month choice height & margin */
+    width: 100%;
+    display: flex;
     flex-wrap: wrap;
-    gap: 20px
+    gap: 8px;
+}
+
+.calendar-container > div {
+    width: 100%;
+    height: calc((100% - 78px) / 6);
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
 }
 
 .calendar-container > div:first-child {
     height: 30px;
 }
 
-.calendar-container > div:first-child > div {
+.calendar-container > div > div {
     width: calc(100% / 7);
     display: flex;
-    align-items: center;
     justify-content: center;
-    color: var(--color7);
-    font-size: 20px;
-    font-weight: 600;
-}
-
-.calendar-container > div {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    gap: 20px;
+    align-items: center;
 }
 
 .calendar-container > div:not(:first-child) > div {
     background-color: var(--color1);
-    width: calc(100% / 7);
-    height: 10vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 7px;
-    cursor: pointer;
-    color: var(--color7);
-    font-size: 20px;
-    font-weight: 500;
+    border-radius: 8px;
 }
 
+.calendar-container > div:not(:first-child) > div.selected {
+    box-shadow: inset 0px 0px 0px 3px var(--color5);
+}
 
 /* User Page */
 main .users-page {
