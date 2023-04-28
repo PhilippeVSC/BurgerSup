@@ -2,7 +2,7 @@
 const calcell = document.querySelectorAll(".calendar-container > div:not(:first-child) > div");
 
 // Array of month names
-const month_name = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+const month_name = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'aout', 'septembre', 'octobre', 'novembre', 'decembre'];
 
 // Page switch function
 function switchSelected() {
@@ -74,6 +74,8 @@ displayCalendarContent(month, year);
 const btn_precedent = document.querySelector('.precedent-month-btn');
 const btn_next = document.querySelector('.next-month-btn');
 
+let selectedCell = null;
+
 // Precedent & Next month button
 function changeMonth(value) {
   if (value == 'precedent') {
@@ -82,22 +84,20 @@ function changeMonth(value) {
       month = 12;
       year--;
     }
-    displayCalendarContent(month, year);
-    console.log(month_name[month - 1], year);
-    selectedCell.classList.remove('selected');
   } else {
     month++;
     if (month > 12) {
       month = 1;
       year++;
     }
-    displayCalendarContent(month, year);
-    console.log(month_name[month - 1], year);
+  }
+  if (selectedCell) {
     selectedCell.classList.remove('selected');
   }
+  displayCalendarContent(month, year);
+  let date_info = document.querySelector('.date_info');
+  date_info.innerHTML = (month_name[month - 1] + ' ' + year)
 }
-
-let selectedCell = null;
 
 function selectCell(cell) {
   if (selectedCell) {

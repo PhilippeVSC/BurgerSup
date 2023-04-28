@@ -57,6 +57,7 @@ p {
 img {
     width: 30px;
     height: 30px;
+    -webkit-user-drag: none;
 }
 
 input::placeholder {
@@ -436,6 +437,29 @@ main .calendar-page .left-part {
     font-weight: 600;
 }
 
+.left-part .db-info {
+    background-color: #146ebe;
+    width: 90%;
+    height: fit-content;
+    border-radius: 7px;  
+    overflow: hidden;
+}
+
+.db_error_container,
+.db_success_container {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.db_error_container {
+    background-color: rgb(253, 86, 86);
+}
+
+.db_success_container {
+    background-color: var(--color5);
+}
+
 /* Calendar Section */
 main .calendar-page .calendar {
     grid-area: 1 / 2 / 2 / 3;
@@ -443,6 +467,13 @@ main .calendar-page .calendar {
     padding-top: 30px;
     width: 100%;
     height: calc(100% - 30px); /* Padding */
+}
+
+.calendar * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 /* Changing month part */
@@ -460,6 +491,8 @@ main .calendar-page .calendar {
     font-size: 18px;
     margin-left: 15px;
     margin-right: 15px;
+    width: 150px;
+    text-align: center;
 }
 
 .calendar .month button {
