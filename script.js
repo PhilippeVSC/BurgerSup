@@ -121,3 +121,42 @@ calcell.forEach((cell, index) => {
     }
   });
 });
+
+// Send content to bdd table
+function sendTableContent(table, content) {
+  var xhttp = new XMLHttpRequest();
+
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log('La requête a été exécutée avec succès.');
+    }
+  };
+  xhttp.onerror = function() {
+    console.error('Une erreur est survenue lors de l\'exécution de la requête.');
+  };
+
+  if(table === 'bs_user') {
+
+    let formData = new FormData();
+    formData.append('user_name', content[0]);
+    formData.append('user_id', content[1]);
+
+    xhttp.open("POST", "add_user.php", true);
+    xhttp.send(formData);
+
+  } else if (table === 'bs_data') {
+
+    let formData = new FormData();
+    formData.append('user_name', content[0]);
+    formData.append('user_id', content[1]);
+    formData.append('user_id', content[1]);
+
+    xhttp.open("POST", "add_user.php", true);
+    xhttp.send(formData);
+
+  } else {
+    console.log('Mauvaise nom de table');
+  }
+}
+
+sendTableContent('bs_user', ['Baptyst', '2']);
