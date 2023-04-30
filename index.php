@@ -45,7 +45,7 @@ if ($bdd->connect_error) {
                     </div>
                 </div>
                 <div class="profil-gestion">
-                    <form class="user-create">
+                    <form class="user-create" method="POST" action="add_user.php">
                         <label for="user-creation">Entrez votre prénom :</label>
                         <input class="user-creation" type="text" placeholder="Créer un profil" name="user-creation">
                         <button type="submit">
@@ -211,7 +211,7 @@ if ($bdd->connect_error) {
                     echo '<tr>';
                     echo '<td>' . htmlspecialchars($row['user_name']) . '</td>';
                     echo '<td>' . htmlspecialchars($row['user_id']) . '</td>';
-                    echo '<td><button data-id="' . htmlspecialchars($row['user_id']) . '" onclick="manageUser(\'delete\', null, ' . htmlspecialchars($row['user_id']) . ')">Supprimer</button></td>';
+                    echo '<td><a href="delete_user.php?id=' . $row['user_id'] . '"><button>Supprimer</button></a></td>';
                     echo '</tr>';
                     }
                     echo '</table>';
