@@ -122,8 +122,32 @@ calcell.forEach((cell, index) => {
   });
 });
 
-// Send content to bdd table
-function sendTableContent(table, content) {
+// Get table data function
+function getTableData() {
+  var xhttp = new XMLHttpRequest();
+  var bs_user = [];
+  var bs_data = [];
+
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      // parsing de la réponse JSON
+      var response = JSON.parse(this.responseText);
+      bs_user = response.bs_user;
+      bs_data = response.bs_data;
+    }
+  };
+  xhttp.open("GET", "get_data.php", true);
+  xhttp.send();
+
+  return { bs_user: bs_user, bs_data: bs_data };
+}
+
+var data = getTableData();
+console.log(data.bs_user);
+console.log(data.bs_data);
+
+// Manage user function
+function manageUser(action, user, id){
   var xhttp = new XMLHttpRequest();
 
   xhttp.onreadystatechange = function() {
@@ -135,28 +159,11 @@ function sendTableContent(table, content) {
     console.error('Une erreur est survenue lors de l\'exécution de la requête.');
   };
 
-  if(table === 'bs_user') {
+  let formData = new FormData();
+  formData.append('action', action);
+  formData.append('user_name', user);
+  formData.append('user_id', id);
 
-    let formData = new FormData();
-    formData.append('user_name', content[0]);
-    formData.append('user_id', content[1]);
-
-    xhttp.open("POST", "add_user.php", true);
-    xhttp.send(formData);
-
-  } else if (table === 'bs_data') {
-
-    let formData = new FormData();
-    formData.append('user_name', content[0]);
-    formData.append('user_id', content[1]);
-    formData.append('user_id', content[1]);
-
-    xhttp.open("POST", "add_user.php", true);
-    xhttp.send(formData);
-
-  } else {
-    console.log('Mauvaise nom de table');
-  }
+  xhttp.open("POST", "manage_user.php", true);
+  xhttp.send(formData);
 }
-
-sendTableContent('bs_user', ['Baptyst', '2']);
