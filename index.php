@@ -89,7 +89,7 @@ if ($bdd->connect_error) {
                 <div class="hours-input-container">
                     <label for="hours-input">Entre le nombre d'heures</label>
                     <input class="hours-input" type="text" placeholder="Nombre d'heures" name="hours-input">
-                    <button type="submit">
+                    <button id="submit-button" type="submit">
                         <img src="src/img/icon/check.svg" draggable="false">
                     </button>
                 </div>
@@ -211,7 +211,7 @@ if ($bdd->connect_error) {
                     echo '<tr>';
                     echo '<td>' . htmlspecialchars($row['user_name']) . '</td>';
                     echo '<td>' . htmlspecialchars($row['user_id']) . '</td>';
-                    echo '<td><a href="delete_user.php?id=' . $row['user_id'] . '"><button>Supprimer</button></a></td>';
+                    echo '<td><a href="delete_user.php?id=' . $row['user_id'] . '">Supprimer</a></td>';
                     echo '</tr>';
                     }
                     echo '</table>';

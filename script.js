@@ -57,6 +57,8 @@ function displayCalendarContent(month, year) {
       calcell[i].style.cursor = 'default';
     // Fill in dates for the current month
     } else {
+      calcell[i].setAttribute('id', (day + '/' + month + '/' + year).toString());
+      console.log((day + '/' + month + '/' + year).toString());
       calcell[i].innerHTML = day;
       calcell[i].style.opacity = '1';
       calcell[i].style.cursor = 'pointer';
@@ -120,4 +122,48 @@ calcell.forEach((cell, index) => {
       selected_date.innerHTML = date.toLocaleDateString('fr-FR', options);
     }
   });
+});
+
+// Récupération de l'élément button
+const submitButton = document.getElementById('submit-button');
+
+// Ajout d'un écouteur d'événement au clic sur le bouton
+submitButton.addEventListener('click', function(event) {
+  event.preventDefault(); // Empêcher la soumission du formulaire
+
+  let input = document.querySelector('.hours-input');
+  let inputValue = input.value;
+
+  let select = document.getElementById('dropdown');
+  let selectedValue = select.value;
+
+
+  if(!selectedValue) {
+    alert('veuillez sélectionner un profil');
+  } else if (typeof selectedCell === 'undefined' || selectedCell === null) {
+    alert('veuillez sélectionner une date');
+  } else if (!inputValue) {
+    alert('veuillez entrer une valeur.');
+  } else if (isNaN(inputValue)) {
+    alert('veuillez entrer un nombre');
+  } else {
+    console.log('id: ' + selectedValue + ', date:  ' + selectedCell.id + ', value: ' + inputValue);
+
+    let formData = new FormData();
+    formData.append('user_id', selectedValue);
+    formData.append('date', selectedCell.id);
+    formData.append('value', inputValue);
+
+    // Envoi des données via AJAX
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', 'send_date.php');
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        console.log(xhr.responseText);
+      } else {
+        console.log('Erreur : ' + xhr.status);
+      }
+    };
+    xhr.send(formData);
+  }
 });

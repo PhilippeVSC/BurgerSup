@@ -572,4 +572,54 @@ main .users-page {
     z-index: 2;
     transform: translateY(-100%);
     transition: 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main .users-page table {
+    width: 50%;
+    min-width: 1000px;
+    height: fit-content;
+    max-height: 100%;
+    background-color: var(--color1);
+    border-radius: 5px;
+    padding: 40px;
+}
+
+main .users-page table tr,
+main .users-page table td {
+    height: 40px;
+}
+
+main .users-page table th:nth-child(1) {
+    width: 70%;
+}
+
+main .users-page table th:nth-child(2) {
+    width: 10%;
+}
+
+main .users-page table th:nth-child(3) {
+    width: 20%;
+}
+
+main .users-page table a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    width: 100%;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: rgb(243, 50, 50);
+    color: var(--color1);
+    border-radius: 5px;
+    font-size: 16px;
+    transition: 300ms;
+}
+
+main .users-page table a:hover {
+    background-color: rgb(201, 30, 30);
 }
