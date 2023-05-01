@@ -100,16 +100,16 @@ if ($bdd->connect_error) {
                         <th>Récapitulatif</th>
                         </tr>
                         <tr>
-                        <td>Lundi</td>
-                        <td>148h</td>
+                        <td class="scoreboard-day">Lundi</td>
+                        <td class="scoreboard-day-value">148h</td>
                         </tr>
                         <tr>
-                        <td>Février</td>
-                        <td>148h</td>
+                        <td class="scoreboard-month">Février</td>
+                        <td class="scoreboard-month-value">148h</td>
                         </tr>
                         <tr>
-                        <td>2023</td>
-                        <td>148h</td>
+                        <td class="scoreboard-year">2023</td>
+                        <td class="scoreboard-year-value">148h</td>
                         </tr>
                     </table>                  
                 </div>

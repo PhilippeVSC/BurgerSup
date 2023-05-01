@@ -3,6 +3,7 @@ const calcell = document.querySelectorAll(".calendar-container > div:not(:first-
 
 // Array of month names
 const month_name = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'aout', 'septembre', 'octobre', 'novembre', 'decembre'];
+const day_name = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
 
 // Page switch function
 function switchSelected() {
@@ -58,12 +59,14 @@ function displayCalendarContent(month, year) {
     // Fill in dates for the current month
     } else {
       calcell[i].setAttribute('id', (day + '/' + month + '/' + year).toString());
-      console.log((day + '/' + month + '/' + year).toString());
       calcell[i].innerHTML = day;
       calcell[i].style.opacity = '1';
       calcell[i].style.cursor = 'pointer';
       day++;
     }
+
+    let date = new Date(year, month-1, 1);
+    getData(1, '1', (date.getMonth() + 1).toString().padStart(2, '0'),  date.getFullYear());
   }
 }
 
@@ -120,6 +123,7 @@ calcell.forEach((cell, index) => {
       const date = new Date(year, month - 1, parseInt(cell.innerHTML));
       const options = { weekday: 'long', day: 'numeric', month: 'long' };
       selected_date.innerHTML = date.toLocaleDateString('fr-FR', options);
+      getData(1, date.getDate().toString().padStart(2, '0'), (date.getMonth() + 1).toString().padStart(2, '0'),  date.getFullYear());
     }
   });
 });
@@ -167,3 +171,40 @@ submitButton.addEventListener('click', function(event) {
     xhr.send(formData);
   }
 });
+
+function getData(user_id, day, month, year) {
+  let formData = new FormData();
+  formData.append('user_id', user_id);
+  formData.append('day', day);
+  formData.append('month', month);
+  formData.append('year', year);
+
+  // Envoi des données via AJAX
+  let xhr = new XMLHttpRequest();
+  xhr.open('POST', 'get_data.php');
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      let data = JSON.parse(xhr.responseText);
+      let value_day = data.value_day;
+      let value_month = data.value_month;
+      let value_year = data.value_year;
+
+      var scoreboard_day = document.querySelector('.scoreboard-day');
+      var scoreboard_day_value = document.querySelector('.scoreboard-day-value');
+      var scoreboard_month = document.querySelector('.scoreboard-month');
+      var scoreboard_month_value = document.querySelector('.scoreboard-month-value');
+      var scoreboard_year = document.querySelector('.scoreboard-year');
+      var scoreboard_year_value = document.querySelector('.scoreboard-year-value');
+
+      scoreboard_day.innerHTML = day_name[date.getDay()];
+      scoreboard_day_value.innerHTML = (value_day + 'h');
+      scoreboard_month.innerHTML = month_name[date.getMonth()];
+      scoreboard_month_value.innerHTML = (value_month + 'h');
+      scoreboard_year.innerHTML = year;
+      scoreboard_year_value.innerHTML = (value_year + 'h');
+    } else {
+      console.log('Erreur : ' + xhr.status);
+    }
+  };
+  xhr.send(formData);
+}
