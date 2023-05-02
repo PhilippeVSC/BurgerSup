@@ -1,6 +1,6 @@
 <?php
 // Connexion à la bdd
-$bdd = new mysqli("philipsadmin.mysql.db", "philipsadmin", "89wAxT8q5K", "philipsadmin");
+$bdd = new mysqli("localhost", "root", "", "burger_sup");
 
 // Vérifier la connexion
 if ($bdd->connect_error) {

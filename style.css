@@ -437,29 +437,6 @@ main .calendar-page .left-part {
     font-weight: 600;
 }
 
-.left-part .db-info {
-    background-color: #146ebe;
-    width: 90%;
-    height: fit-content;
-    border-radius: 7px;  
-    overflow: hidden;
-}
-
-.db_error_container,
-.db_success_container {
-    width: 100%;
-    height: 100%;
-    padding: 20px;
-}
-
-.db_error_container {
-    background-color: rgb(253, 86, 86);
-}
-
-.db_success_container {
-    background-color: var(--color5);
-}
-
 /* Calendar Section */
 main .calendar-page .calendar {
     grid-area: 1 / 2 / 2 / 3;

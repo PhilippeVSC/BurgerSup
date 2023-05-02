@@ -1,5 +1,5 @@
 <?php
-    $bdd = new mysqli("philipsadmin.mysql.db", "philipsadmin", "89wAxT8q5K", "philipsadmin");
+    $bdd = new mysqli("localhost", "root", "", "burger_sup");
 
     $id = $_GET['id'];
 

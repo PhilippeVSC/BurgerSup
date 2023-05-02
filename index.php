@@ -1,17 +1,10 @@
 <?php
-$servername = "philipsadmin.mysql.db";
-$username = "philipsadmin";
-$password = "89wAxT8q5K";
-$dbname = "philipsadmin";
-
-// Connexion à la bdd
-$bdd = new mysqli($servername, $username, $password, $dbname);
+$bdd = new mysqli("localhost", "root", "", "burger_sup");
 
 // Vérifiez la connexion
 if ($bdd->connect_error) {
     echo("La connexion a échoué: " . $bdd->connect_error);
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -58,7 +51,7 @@ if ($bdd->connect_error) {
                             <option value="" disabled selected hidden>Sélectionner</option>
                             <?php
                                 // Connexion à la base de données
-                                $bdd = new mysqli("philipsadmin.mysql.db", "philipsadmin", "89wAxT8q5K", "philipsadmin");
+                                $bdd = new mysqli("localhost", "root", "", "burger_sup");
                                 
                                 // Récupération des utilisateurs depuis la base de données
                                 $sql = "SELECT * FROM bs_user";
@@ -84,7 +77,7 @@ if ($bdd->connect_error) {
             <section class="left-part">
                 <div class="date">
                     <img src="src/img/icon/pin.svg" draggable="false">
-                    <p id="date">Lundi 12 février</p>
+                    <p class="date-selector">Lundi 12 février</p>
                 </div>
                 <div class="hours-input-container">
                     <label for="hours-input">Entre le nombre d'heures</label>
@@ -200,7 +193,7 @@ if ($bdd->connect_error) {
                 <th>Action</th>
                 </tr>
                 <?php
-                    $bdd = new mysqli("philipsadmin.mysql.db", "philipsadmin", "89wAxT8q5K", "philipsadmin");
+                    $bdd = new mysqli("localhost", "root", "", "burger_sup");
 
                     // récupération des utilisateurs depuis la base de données
                     $sql = "SELECT * FROM bs_user";
