@@ -17,25 +17,27 @@ $formatted_date = date_format($date, 'Y-m-d');
 // Récupérer la valeur entrée dans le formulaire
 $value = $_POST['value'];
 
-// Vérifier si une ligne avec le même id et la même date existe déjà dans la base de données
-$sql_select = "SELECT * FROM bs_data WHERE user_id='$user_id' AND date='$formatted_date'";
-$result = mysqli_query($bdd, $sql_select);
+if($value != 0) {
+  // Vérifier si une ligne avec le même id et la même date existe déjà dans la base de données
+  $sql_select = "SELECT * FROM bs_data WHERE user_id='$user_id' AND date='$formatted_date'";
+  $result = mysqli_query($bdd, $sql_select);
 
-if (mysqli_num_rows($result) > 0) {
-  // Une ligne avec le même id et la même date existe déjà, exécuter une requête UPDATE
-  $sql_update = "UPDATE bs_data SET value='$value' WHERE user_id='$user_id' AND date='$formatted_date'";
-  if (mysqli_query($bdd, $sql_update)) {
-    echo "Les horaires ont été modifiés avec succès !";
+  if (mysqli_num_rows($result) > 0) {
+    // Une ligne avec le même id et la même date existe déjà, exécuter une requête UPDATE
+    $sql_update = "UPDATE bs_data SET value='$value' WHERE user_id='$user_id' AND date='$formatted_date'";
+    if (mysqli_query($bdd, $sql_update)) {
+      echo "Les horaires ont été modifiés avec succès !";
+    } else {
+      echo "Erreur lors de la mise a jour des horaires: " . mysqli_error($bdd);
+    }
   } else {
-    echo "Erreur lors de la mise a jour des horaires: " . mysqli_error($bdd);
-  }
-} else {
-  // Aucune ligne avec le même id et la même date n'existe, exécuter une requête INSERT
-  $sql_insert = "INSERT INTO bs_data (user_id, date, value) VALUES ('$user_id', '$formatted_date', '$value')";
-  if (mysqli_query($bdd, $sql_insert)) {
-    echo "Les horaires ont été ajoutés avec succès!";
-  } else {
-    echo "Erreur lors de l'ajout des horaires: " . mysqli_error($bdd);
+    // Aucune ligne avec le même id et la même date n'existe, exécuter une requête INSERT
+    $sql_insert = "INSERT INTO bs_data (user_id, date, value) VALUES ('$user_id', '$formatted_date', '$value')";
+    if (mysqli_query($bdd, $sql_insert)) {
+      echo "Les horaires ont été ajoutés avec succès!";
+    } else {
+      echo "Erreur lors de l'ajout des horaires: " . mysqli_error($bdd);
+    }
   }
 }
 
@@ -43,6 +45,6 @@ if (mysqli_num_rows($result) > 0) {
 mysqli_close($bdd);
 
 // Rediriger vers la page index.php
-header("Location: index.php");
+// header("Location: index.php");
 exit();
 ?>

@@ -77,7 +77,7 @@ if ($bdd->connect_error) {
             <section class="left-part">
                 <div class="date">
                     <img src="src/img/icon/pin.svg" draggable="false">
-                    <p class="date-selector">Lundi 12 février</p>
+                    <p class="date-selector">Non sélectionné</p>
                 </div>
                 <div class="hours-input-container">
                     <label for="hours-input">Entre le nombre d'heures</label>
@@ -93,16 +93,16 @@ if ($bdd->connect_error) {
                         <th>Récapitulatif</th>
                         </tr>
                         <tr>
-                        <td class="scoreboard-day">Lundi</td>
-                        <td class="scoreboard-day-value">148h</td>
+                        <td class="scoreboard-day">Non sélectionné</td>
+                        <td class="scoreboard-day-value">0h</td>
                         </tr>
                         <tr>
-                        <td class="scoreboard-month">Février</td>
-                        <td class="scoreboard-month-value">148h</td>
+                        <td class="scoreboard-month"></td>
+                        <td class="scoreboard-month-value">0h</td>
                         </tr>
                         <tr>
-                        <td class="scoreboard-year">2023</td>
-                        <td class="scoreboard-year-value">148h</td>
+                        <td class="scoreboard-year"></td>
+                        <td class="scoreboard-year-value">0h</td>
                         </tr>
                     </table>                  
                 </div>

@@ -39,6 +39,8 @@ let selectedCell = null;
 // Set switch month button cooldown to false
 let isCountdown = false;
 
+let id = '0';
+
 
 // Page switch function
 function switchSelected() {
@@ -79,6 +81,7 @@ function displayCalendarContent(month, year, data) {
 
   // Loop to display all the dates of the month
   var day = 1;
+  var monthSumHours = 0;
   for (var i = firstDay-1; i < calcell.length; i++) {
     // Fill in dates for the next month
     if (day > new Date(year, month, 0).getDate()) {
@@ -89,6 +92,7 @@ function displayCalendarContent(month, year, data) {
 
     // Fill in dates for the current month
     } else {
+      calcell[i].classList.remove(...calcell[i].classList);
       calcell[i].setAttribute('id', (day + '/' + month + '/' + year).toString());
       calcell[i].innerHTML = day;
       calcell[i].style.opacity = '1';
@@ -97,11 +101,14 @@ function displayCalendarContent(month, year, data) {
       for (var j = 0; j < data.length; j++) {
         if (day == data[j].date) {
           calcell[i].style.backgroundColor = '#63e6bf66';
+          monthSumHours += parseInt(data[j].value);
+          calcell[i].classList.add(parseInt(data[j].value));
         }
       }
       day++;
     }
   }
+  scoreboard_month_value.innerHTML = (monthSumHours + 'h');
   scoreboard_month.innerHTML = month_name[Number(month - 1)];
   scoreboard_year.innerHTML = year;
   date_info.innerHTML = (month_name[month - 1] + ' ' + year);
@@ -124,12 +131,13 @@ function changeMonth(value) {
       if (month > 12) {
         month = 1;
         year++;
+        getYearData(id, year);
       }
     }
     if (selectedCell) {
       selectedCell.classList.remove('selected');
     }
-    getData('1', month.toString().padStart(2, '0'), year);
+    getData(id, month.toString().padStart(2, '0'), year);
 
     let cooldownTime = 500;
 
@@ -149,7 +157,7 @@ function selectCell(cell) {
 }
 
 // Calendar Cells add click eventlistener
-calcell.forEach((cell, index) => {
+calcell.forEach((cell) => {
   cell.addEventListener('click', () => {
     if (cell.style.opacity == '1') {
       selectCell(cell);
@@ -157,6 +165,11 @@ calcell.forEach((cell, index) => {
       const options = { weekday: 'long', day: 'numeric', month: 'long' };
       selected_date.innerHTML = date.toLocaleDateString('fr-FR', options);
       scoreboard_day.innerHTML = day_name[date.getDay()];
+      if(!isNaN(cell.classList.item(0))){
+        scoreboard_day_value.innerHTML = (cell.classList.item(0) + 'h');
+      } else {
+        scoreboard_day_value.innerHTML = '0h';
+      }
     }
   });
 });
@@ -175,15 +188,17 @@ submitButton.addEventListener('click', function(event) {
 
   if(!selectedValue) {
     alert('veuillez sélectionner un profil');
+    input.value = '';
   } else if (typeof selectedCell === 'undefined' || selectedCell === null) {
     alert('veuillez sélectionner une date');
+    input.value = '';
   } else if (!inputValue) {
     alert('veuillez entrer une valeur.');
+    input.value = '';
   } else if (isNaN(inputValue)) {
     alert('veuillez entrer un nombre');
+    input.value = '';
   } else {
-    console.log('id: ' + selectedValue + ', date:  ' + selectedCell.id + ', value: ' + inputValue);
-
     let formData = new FormData();
     formData.append('user_id', selectedValue);
     formData.append('date', selectedCell.id);
@@ -200,14 +215,14 @@ submitButton.addEventListener('click', function(event) {
       }
     };
     xhr.send(formData);
-    input.value = '';
     setTimeout(() => {
-      getData('1', month.toString().padStart(2, '0'), year);
+      getData(id, month.toString().padStart(2, '0'), year);
+      getYearData(id, year);
+      input.value = '';
     }, 500);
   }
 });
 
-let dataArray = [];
 
 function getData(user_id, month, year) {
   let formData = new FormData();
@@ -224,16 +239,12 @@ function getData(user_id, month, year) {
 
       // Stocker les données dans un tableau
       let dataArray = [];
-      let totalYearValue = 0;
       for (let i = 0; i < data.length; i++) {
         let date = new Date(data[i].date);
         let dayData = { date: date.getDate(), value: data[i].value };
         dataArray.push(dayData);
-        totalYearValue += data[i].value; // Ajout du calcul de la somme des valeurs de l'année
       }
-
       displayCalendarContent(month, year, dataArray);
-      console.log('Total des valeurs de l\'année ' + year + ' : ' + totalYearValue); // Affichage du total dans la console
     } else {
       console.log('Erreur : ' + xhr.status);
     }
@@ -241,4 +252,42 @@ function getData(user_id, month, year) {
   xhr.send(formData);
 }
 
-let myData = getData('1', month.toString().padStart(2, '0'), year);
+function getYearData(user_id, year) {
+  scoreboard_year_value.innerHTML = '0h';
+  var xhttp = new XMLHttpRequest();
+
+  // Définir la fonction de rappel qui sera exécutée lorsque la réponse sera prête
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      if(this.responseText == null || this.responseText == 0){
+        scoreboard_year_value.innerHTML = '0h';
+      } else {
+        scoreboard_year_value.innerHTML = (this.responseText + 'h');
+      }
+    }
+  };
+
+  // Envoyer la requête POST au code PHP avec les paramètres user_id et year
+  xhttp.open("POST", "get_year_data.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("user_id=" + user_id + "&year=" + year);
+}
+
+const dropdown = document.querySelector('.user-select');
+dropdown.addEventListener('change', () => {
+  changeID();
+});
+
+function changeID() {
+  let dropdown_select = document.getElementById('dropdown');
+  const selectedOption = dropdown_select.value;
+  id = selectedOption.toString();
+
+  if(!selectedOption) {
+    id = '0';
+  }
+    getYearData(id, year);
+    getData(id, month.toString().padStart(2, '0'), year);
+}
+
+changeID();
