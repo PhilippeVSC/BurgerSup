@@ -39,6 +39,20 @@ if($value != 0) {
       echo "Erreur lors de l'ajout des horaires: " . mysqli_error($bdd);
     }
   }
+} else {
+  // Vérifier si une ligne avec le même id et la même date existe déjà dans la base de données
+  $sql_select = "SELECT * FROM bs_data WHERE user_id='$user_id' AND date='$formatted_date'";
+  $result = mysqli_query($bdd, $sql_select);
+
+  if (mysqli_num_rows($result) > 0) {
+    // Une ligne avec le même id et la même date existe déjà, exécuter une requête DELETE
+    $sql_delete = "DELETE FROM bs_data WHERE user_id='$user_id' AND date='$formatted_date'";
+    if (mysqli_query($bdd, $sql_delete)) {
+      echo "La valeur a été supprimée avec succès!";
+    } else {
+      echo "Erreur lors de la suppression de la valeur: " . mysqli_error($bdd);
+    }
+  }
 }
 
 // Fermer la connexion

@@ -92,23 +92,37 @@ header .top-part a {
     align-items: center;
 }
 
-header .top-part .pvc-logo {
+header .top-part .portfolio-return {
     width: 26px;
     height: 26px;
     filter: var(--filtercolor7);
-}
-
-header .top-part .settings {
-    margin-left: auto;
-    width: 32px;
-    height: 32px;
-    filter: var(--filtercolor4);
     cursor: pointer;
-    transition: 300ms;
 }
 
-header .top-part .settings:hover {
-    transform: rotate(80deg);
+header .portfolio-return:hover {
+    animation-name: grow-animation;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes grow-animation {
+    0% {
+      transform: scale(0.9);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(0.9);
+    }
+}
+
+header .top-part .pvc-logo {
+    margin-left: auto;
+    width: 26px;
+    height: 26px;
+    filter: var(--filtercolor7);
 }
 
 /* Bottom Part */
@@ -271,7 +285,7 @@ header input:focus  {
 
 .profil-gestion .user-select select,
 .profil-gestion .user-select option {
-    color: var(--color4);
+    color: black;
     font-size: 16px;
     font-family: 'Poppins';
 }
@@ -294,8 +308,8 @@ main .calendar-page {
     width: calc(100% - (var(--padding) * 2));
     height: 100%;
     display: grid;
-    grid-template-columns: 300px 1fr;
-    grid-template-rows: 1fr;
+    grid-template-columns: 280px 1fr;
+    grid-template-rows: 1fr; 
     transition: 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
@@ -306,14 +320,13 @@ main .calendar-page .left-part {
     display: flex;
     flex-direction: column;
     gap: 25px;
-    align-items: center;
 }
 
 /* Date info */
 .left-part .date {
     display: flex;
     flex-direction: row;
-    width: 90%;
+    width: 95%;
 }
 
 .left-part .date p {
@@ -339,7 +352,7 @@ main .calendar-page .left-part {
     padding-right: 14px;
     display: flex;
     align-items: center;
-    width: 90%;
+    width: 95%;
     height: 50px;
     justify-content: space-between;
 }
@@ -379,12 +392,17 @@ main .calendar-page .left-part {
     width: 24px;
     height: 24px;
     cursor: pointer;
+    transition: 300ms ease-in-out;
+}
+
+.left-part .hours-input-container button img:hover {
+    scale: 120%;
 }
 
 
 /* Hours recap */
 .left-part .recap-container {
-    width: 90%;
+    width: 95%;
     height: fit-content;
     padding: 20px;
     background-color: var(--color5);
@@ -510,6 +528,12 @@ main .calendar-page .calendar {
     gap: 8px;
 }
 
+.calendar-container .days div {
+    font-family: 'Poppins';
+    color: var(--color4);
+    font-weight: 500;
+}
+
 .calendar-container > div {
     width: 100%;
     height: calc((100% - 78px) / 6);
@@ -532,6 +556,9 @@ main .calendar-page .calendar {
 .calendar-container > div:not(:first-child) > div {
     background-color: var(--color1);
     border-radius: 8px;
+    color: var(--color4);
+    font-family: 'Poppins';
+    font-weight: 400;
 }
 
 .calendar-container > div:not(:first-child) > div.selected {
@@ -555,48 +582,221 @@ main .users-page {
     justify-content: center;
 }
 
-main .users-page table {
-    width: 50%;
-    min-width: 1000px;
-    height: fit-content;
-    max-height: 100%;
-    background-color: var(--color1);
-    border-radius: 5px;
-    padding: 40px;
+.user-list {
+    border-collapse: separate; /* Fusionne les bordures de cellules */
+    background-color: transparent; /* Rend le fond transparent */
+    border-spacing: 0 10px;
+    width: 60vw;
 }
 
-main .users-page table tr,
-main .users-page table td {
-    height: 40px;
-}
-
-main .users-page table th:nth-child(1) {
-    width: 70%;
-}
-
-main .users-page table th:nth-child(2) {
-    width: 10%;
-}
-
-main .users-page table th:nth-child(3) {
-    width: 20%;
-}
-
-main .users-page table a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 80%;
-    width: 100%;
-    cursor: pointer;
-    text-decoration: none;
-    background-color: rgb(243, 50, 50);
-    color: var(--color1);
-    border-radius: 5px;
+.user-list * {
+    font-family: 'Poppins';
+    font-weight: 500;
     font-size: 16px;
+    color: var(--color4);
+}
+
+.user-list th:nth-child(1){
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+}
+
+.user-list th:nth-child(3){
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.user-list tr {
+    height: 50px;
+    border-radius: 8px;
+}
+
+.user-list td {
+    background-color: white;
+    text-align: center;
     transition: 300ms;
 }
 
-main .users-page table a:hover {
-    background-color: rgb(201, 30, 30);
+.user-list td.left {
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+}
+
+.user-list td.right {
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+}
+  
+.user-list th {
+    background-color: var(--color4); /* Change la couleur de fond de l'en-tête */
+    color: var(--color1); /* Change la couleur du texte de l'en-tête */
+    width: calc(100% / 3);
+    font-weight: 600;
+}
+
+.user-list a {
+    display: block;
+    width: 120px;
+    height: 30px;
+    border-radius: 6px;
+    background-color: rgb(255, 79, 79);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--color1);
+    cursor: pointer;
+    transition: 300ms;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+}
+
+.user-list a:hover {
+    background-color: rgb(216, 0, 0);
+}
+
+@media (max-width: 1300px) {
+    :root {
+      --padding: 20px;
+    }
+}
+
+@media (max-width: 900px) {
+    header {
+        height: fit-content;
+        padding: 0;
+        padding-bottom: 8px;
+    }
+
+    header .top-part {
+        padding-top: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    header .bottom-part {
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 16px;
+    }
+    
+    header .bottom-part .page-selection {
+        width: 100%;
+        height: 60px;
+        order: 2;
+        gap: 0;
+    }
+    
+    header .bottom-part .profil-gestion {
+        width: 100%;
+        margin: 0;
+        height: 60px;
+        order: 1;
+        padding: var(--padding);
+        justify-content: space-between;
+    }
+
+    header .bottom-part .page-selection,
+    header .bottom-part .profil-gestion {
+        display: flex;
+        align-items: center;
+    }
+
+    header .bottom-part .profil-gestion div,
+    header .bottom-part .profil-gestion form {
+        width: 50%;
+    }
+
+    header .bottom-part .page-selection div {
+        width: calc(100vw / 2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    main {
+        height: calc(100vw + 340px);
+    }
+
+    main .calendar-page {
+        grid-template-columns: 1fr;
+        grid-template-rows: 100vw 340px; 
+        
+    }
+
+    main .calendar-page .calendar {
+        width: 100%;
+        grid-area: 1 / 1 / 2 / 2;
+        padding-left: 0;
+    }
+
+    main .calendar-page .left-part {
+        width: 100%;
+        grid-area: 2 / 1 / 3 / 2;
+        padding: 0;
+    }
+
+    .left-part .date,
+    .left-part .recap-container,
+    .left-part .hours-input-container {
+        width: 100%;
+    }
+
+    main .calendar-container {
+        width: calc(100vw - 40px);
+    }
+
+    main .users-page {
+        padding-top: 20px;
+        align-items: start;
+    }
+
+    .user-list {
+        width: calc(100vw - 40px);
+    }
+}
+
+@media (max-width: 480px) {
+    header .bottom-part .profil-gestion {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        height: fit-content;
+    }
+
+    header .bottom-part .profil-gestion div,
+    header .bottom-part .profil-gestion form {
+        width: 100%;
+    }
+
+    main {
+        height: calc(120vw + 350px);
+    }
+
+    .calendar-container > div {
+        gap: 4px;
+        height: calc((100vw - 40px) / 7);
+    }
+
+    .calendar-container > div:not(:first-child) > div {
+        border-radius: 6px;
+        width: calc((100vw - 40px) / 7);
+        height: calc((100vw - 40px) / 7);
+    }
+
+    main .calendar-page {
+        grid-template-columns: 1fr;
+        grid-template-rows: 120vw 350px; 
+        
+    }
+
+    .calendar .month {
+        justify-content: center;
+    }
+
+    .calendar-container {
+        gap: 4px;
+        height: fit-content;
+    }
 }

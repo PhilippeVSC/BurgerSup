@@ -12,7 +12,7 @@ $user_id = $_POST['user_id'];
 $year = $_POST['year'];
 
 // Préparer la requête SQL
-$sql = "SELECT SUM(value) AS total_value FROM bs_data WHERE user_id = 1 AND YEAR(date) = $year";
+$sql = "SELECT SUM(value) AS total_value FROM bs_data WHERE user_id = $user_id AND YEAR(date) = $year";
 
 // Exécuter la requête SQL
 $result = $bdd->query($sql);

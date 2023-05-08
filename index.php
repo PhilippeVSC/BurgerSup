@@ -21,10 +21,10 @@ if ($bdd->connect_error) {
         <nav>
             <section class="top-part">
                 <a href="https://www.philippevivesc.fr/">
-                    <img src="src/img/logo.svg" class="pvc-logo" draggable="false">
+                    <img src="src/img/arrow-left-solid.svg" class="portfolio-return" draggable="false">
                 </a>
+                <img src="src/img/logo.svg" class="pvc-logo" draggable="false">
                 <h1>BURGERSUP</h1>
-                <img src="src/img/icon/setting.svg" class="settings" draggable="false">
             </section>
             <section class="bottom-part">
                 <div class="page-selection">
@@ -119,13 +119,13 @@ if ($bdd->connect_error) {
                 </div>
                 <div class="calendar-container">
                     <div class="days">
-                        <div>Lundi</div>
-                        <div>Mardi</div>
-                        <div>Mercredi</div>
-                        <div>Jeudi</div>
-                        <div>Vendredi</div>
-                        <div>Samedi</div>
-                        <div>Dimanche</div>
+                        <div>Lun</div>
+                        <div>Mar</div>
+                        <div>Mer</div>
+                        <div>Jeu</div>
+                        <div>Ven</div>
+                        <div>Sam</div>
+                        <div>Dim</div>
                     </div>
                     <div class="first-row">
                         <div>1</div>
@@ -202,9 +202,9 @@ if ($bdd->connect_error) {
                     // génération de la table HTML
                     while ($row = $result->fetch_assoc()) {
                     echo '<tr>';
-                    echo '<td>' . htmlspecialchars($row['user_name']) . '</td>';
+                    echo '<td class="left">' . htmlspecialchars($row['user_name']) . '</td>';
                     echo '<td>' . htmlspecialchars($row['user_id']) . '</td>';
-                    echo '<td><a href="delete_user.php?id=' . $row['user_id'] . '">Supprimer</a></td>';
+                    echo '<td class="right"><a href="delete_user.php?id=' . $row['user_id'] . '">Supprimer</a></td>';
                     echo '</tr>';
                     }
                     echo '</table>';

@@ -112,6 +112,11 @@ function displayCalendarContent(month, year, data) {
   scoreboard_month.innerHTML = month_name[Number(month - 1)];
   scoreboard_year.innerHTML = year;
   date_info.innerHTML = (month_name[month - 1] + ' ' + year);
+
+  selectedCell = null;
+  selected_date.innerHTML = 'Non sélectionné';
+  scoreboard_day.innerHTML = 'Non sélectionné';
+  scoreboard_day_value.innerHTML = '0h';
 }
 
 
